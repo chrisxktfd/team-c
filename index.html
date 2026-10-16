@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Cerise ♡</title>
+<meta name="theme-color" content="#fff0f3">
+<meta name="description" content="Entra al pequeño universo de Maison Cerise. Un lugar dulce, mágico y lleno de amistad.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f4a6b8;
+  --dark: #754252;
+  --cream: #fff9f4;
+  --light: #fff0f3;
+  --lavender: #eee6fa;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--dark);
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 7%;
+  background: #fff9f4ed;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #f4d9df;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+.navlinks {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+}
+.navlinks a:hover { color: #c45c7b; }
+.hero {
+  min-height: 87vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 65px 22px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 15% 20%, #fbdce5 0, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, #e9e0fb 0, transparent 38%),
+    #fff9f4;
+}
+.eyebrow {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(43px, 10vw, 78px);
+  line-height: 1.08;
+  font-weight: 500;
+  margin: 20px 0 12px;
+}
+.hero h1 em { color: #cf718b; }
+.hero p {
+  max-width: 390px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.cherry {
+  font-size: 63px;
+  margin: 12px 0;
+  animation: bob 3s ease-in-out infinite;
+  filter: drop-shadow(0 7px 9px #d88a9b40);
+}
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 40px;
+  padding: 14px 23px;
+  margin: 14px 5px 0;
+  cursor: pointer;
+  background: var(--dark);
+  color: white;
+  font-size: 12px;
+  transition: transform .25s, box-shadow .25s;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px #75425225;
+}
+.btn.alt {
+  color: var(--dark);
+  background: white;
+  border: 1px solid #eed1da;
+}
+.float {
+  position: absolute;
+  opacity: .65;
+  pointer-events: none;
+  animation: bob 4s ease-in-out infinite;
+}
+.f1 { top: 15%; left: 8%; font-size: 28px; }
+.f2 { top: 26%; right: 9%; font-size: 23px; animation-delay: -2s; }
+.f3 { bottom: 13%; left: 13%; font-size: 21px; animation-delay: -1s; }
+.f4 { bottom: 18%; right: 12%; font-size: 28px; animation-delay: -3s; }
+section { padding: 76px 7%; }
+.section-head { text-align: center; margin: 0 auto 32px; }
+.kicker {
+  color: #c16b83;
+  letter-spacing: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(29px, 6vw, 43px);
+  font-weight: 500;
+  margin: 12px 0;
+}
+.section-head p {
+  max-width: 460px;
+  margin: auto;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.about {
+  background: white;
+  text-align: center;
+}
+.note {
+  max-width: 650px;
+  margin: auto;
+  padding: 32px 25px;
+  border: 1px solid #f1d8df;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #fff8fa, #fffdf8);
+  box-shadow: 0 10px 35px #b87a8510;
+}
+.note .symbol { font-size: 30px; }
+.note p {
+  font-size: 14px;
+  line-height: 2;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  max-width: 900px;
+  margin: auto;
+}
+.tile {
+  padding: 24px 15px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid #f3dce2;
+  background: white;
+  transition: transform .25s;
+}
+.tile:hover { transform: translateY(-5px) rotate(-1deg); }
+.tile .emoji { font-size: 34px; }
+.tile h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  margin: 12px 0 8px;
+}
+.tile p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+}
+.world { background: var(--light); }
+.world .tile { background: #fffaf9; }
+.join { text-align: center; background: white; }
+.join-card {
+  max-width: 650px;
+  margin: auto;
+  padding: 40px 20px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #fff0f4, #f3edff, #fff7e8);
+}
+.join-card p {
+  font-size: 13px;
+  line-height: 1.9;
+}
+footer {
+  padding: 28px 15px;
+  text-align: center;
+  background: #fff4f3;
+  font-size: 11px;
+  line-height: 2;
+}
+footer span { color: #c16b83; }
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.spark {
+  position: fixed;
+  z-index: 30;
+  pointer-events: none;
+  animation: sparkle 900ms ease-out forwards;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+@keyframes sparkle {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-45px) scale(.3) rotate(35deg); }
+}
+@media (max-width: 600px) {
+  nav { padding: 13px 5%; }
+  .logo { font-size: 16px; }
+  .navlinks { gap: 10px; font-size: 10px; }
+  .hero { min-height: 82vh; }
+  section { padding: 60px 6%; }
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .tile { padding: 22px; }
+  .f1 { left: 5%; }
+  .f2 { right: 5%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <a class="logo" href="#inicio">Maison Cerise ♡</a>
+  <div class="navlinks">
+    <a href="#nosotras">Nosotras</a>
+    <a href="#mundo">Nuestro mundo</a>
+    <a href="#unete">Únete</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <span class="float f1">୨୧</span>
+  <span class="float f2">✧</span>
+  <span class="float f3">♡</span>
+  <span class="float f4">୨ৎ</span>
+
+  <div class="eyebrow">un pequeño lugar para soñar</div>
+  <div class="cherry">🍒</div>
+  <h1>Bienvenue à<br><em>Maison Cerise</em></h1>
+  <p>
+    Un universo de dulzura, amistad y pequeñas locuras.
+    Aquí cada persona tiene su propia magia y un lugar al que pertenecer.
+  </p>
+  <div>
+    <a class="btn" href="#nosotras">Descubre nuestro mundo ♡</a>
+    <a class="btn alt" href="#unete">Conócenos ✧</a>
+  </div>
+  <p style="font-size:11px;letter-spacing:2px">♡ fait avec amour ♡</p>
+</header>
+
+<section class="about" id="nosotras">
+  <div class="section-head reveal">
+    <div class="kicker">un peu de nous</div>
+    <h2>¿Qué es Maison Cerise?</h2>
+    <p>Más que un team, una pequeña historia que escribimos juntas.</p>
+  </div>
+  <div class="note reveal">
+    <div class="symbol">🎀</div>
+    <p>
+      Somos una comunidad de rol que celebra la creatividad,
+      la amistad y la personalidad de cada integrante.
+      Nos gusta crear recuerdos, compartir ideas y hacer de
+      cada día una nueva aventura.
+    </p>
+    <p><em>Un lugar dulce, libre y lleno de posibilidades.</em></p>
+    <div>୨୧ ♡ ୨୧</div>
+  </div>
+</section>
+
+<section id="mundo" class="world">
+  <div class="section-head reveal">
+    <div class="kicker">les petits détails</div>
+    <h2>Nuestro pequeño mundo</h2>
+    <p>Cada rincón tiene su encanto. ¿Cuál será tu favorito?</p>
+  </div>
+
+  <div class="grid">
+    <article class="tile reveal">
+      <div class="emoji">🧸</div>
+      <h3>Nuestra familia</h3>
+      <p>Personas diferentes, una comunidad y muchos recuerdos por crear.</p>
+    </article>
+    <article class="tile reveal">
+      <div class="emoji">🪄</div>
+      <h3>Nuestra magia</h3>
+      <p>Creatividad, personajes, historias y momentos inolvidables.</p>
+    </article>
+    <article class="tile reveal">
+      <div class="emoji">🍰</div>
+      <h3>Nuestro rincón</h3>
+      <p>Un espacio para compartir, divertirnos y expresarnos con libertad.</p>
+    </article>
+  </div>
+</section>
+
+<section id="unete" class="join">
+  <div class="join-card reveal">
+    <div style="font-size:40px">💌</div>
+    <div class="kicker">une petite invitation</div>
+    <h2>¿Quieres formar parte?</h2>
+    <p>
+      Toda historia bonita comienza con un pequeño paso.
+      Ven a conocer Maison Cerise y descubre si este es tu lugar.
+    </p>
+
+    <!-- CAMBIA EL ENLACE DE ABAJO POR EL DE TU GRUPO -->
+    <a class="btn" href="https://chat.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+      Entrar a nuestro universo ♡
+    </a>
+    <p style="font-size:11px">Esperamos conocerte pronto. 🍒</p>
+  </div>
+</section>
+
+<footer>
+  <div style="font-family:'Playfair Display',serif;font-size:20px">
+    Maison Cerise ♡
+  </div>
+  Un pequeño universo creado con cariño.
+  <br>
+  <span>fait avec amour, toujours ୨୧</span>
+  <br>© <span id="year"></span> Maison Cerise
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach((item) => {
+  observer.observe(item);
+});
+
+document.addEventListener('click', (event) => {
+  const sparkle = document.createElement('span');
+  sparkle.className = 'spark';
+  sparkle.textContent = ['✧', '♡', '୨୧', '✨'][Math.floor(Math.random() * 4)];
+  sparkle.style.left = event.clientX + 'px';
+  sparkle.style.top = event.clientY + 'px';
+  sparkle.style.color = '#c16b83';
+  sparkle.style.fontSize = '20px';
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 950);
+});
+</script>
+</body>
+</html>
