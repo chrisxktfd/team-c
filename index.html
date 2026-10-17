@@ -4,386 +4,477 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5f5">
 <title>Maison Cerise ♡</title>
-<meta name="theme-color" content="#fff0f3">
-<meta name="description" content="Entra al pequeño universo de Maison Cerise. Un lugar dulce, mágico y lleno de amistad.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --pink: #f4a6b8;
-  --dark: #754252;
-  --cream: #fff9f4;
-  --light: #fff0f3;
-  --lavender: #eee6fa;
+  --pink:#f5c7d3;
+  --rose:#b65f78;
+  --dark:#583744;
+  --cream:#fff9f1;
+  --white:#fffdfc;
+  --gold:#c6a36a;
+  --green:#668b70;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  color: var(--dark);
-  background: var(--cream);
-  font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 15px 7%;
-  background: #fff9f4ed;
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid #f4d9df;
-}
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 19px;
-  font-weight: 700;
-}
-.navlinks {
-  display: flex;
-  gap: 16px;
-  font-size: 12px;
-}
-.navlinks a:hover { color: #c45c7b; }
-.hero {
-  min-height: 87vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 65px 22px;
-  position: relative;
-  overflow: hidden;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Quicksand',sans-serif;
+  color:var(--dark);
   background:
-    radial-gradient(ellipse at 15% 20%, #fbdce5 0, transparent 40%),
-    radial-gradient(ellipse at 90% 80%, #e9e0fb 0, transparent 38%),
-    #fff9f4;
+    radial-gradient(ellipse at 10% 5%,#fbe0e7 0,transparent 36%),
+    radial-gradient(ellipse at 90% 90%,#f7e9d6 0,transparent 36%),
+    var(--cream);
+  min-height:100vh;
 }
-.eyebrow {
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 700;
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #b65f78;outline-offset:3px}
+#sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.sparkle{position:absolute;animation:float 8s ease-in-out infinite;opacity:.45;color:#c49a8b}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-22px) rotate(25deg)}}
+header{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:18px clamp(16px,5vw,60px);
+  border-bottom:1px solid #e8cbd1;
+  background:#fff9f1d9;backdrop-filter:blur(10px)
 }
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(43px, 10vw, 78px);
-  line-height: 1.08;
-  font-weight: 500;
-  margin: 20px 0 12px;
+.logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;letter-spacing:1px}
+.logo span{color:var(--rose)}
+.nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.nav button,.btn{
+  border:1px solid #e5c3cc;border-radius:999px;
+  padding:10px 16px;background:#fffaf7;color:var(--dark);
+  transition:.25s
 }
-.hero h1 em { color: #cf718b; }
-.hero p {
-  max-width: 390px;
-  font-size: 14px;
-  line-height: 1.9;
+.nav button:hover,.btn:hover{transform:translateY(-2px);background:#fbe6ec}
+.btn.primary{background:var(--rose);border-color:var(--rose);color:white}
+.btn.primary:hover{background:#9c4962}
+main{position:relative;z-index:1;max-width:1100px;margin:auto;padding:22px 17px 60px}
+.screen{display:none;animation:appear .55s ease}
+.screen.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.hero{
+  min-height:68vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:45px 12px
 }
-.cherry {
-  font-size: 63px;
-  margin: 12px 0;
-  animation: bob 3s ease-in-out infinite;
-  filter: drop-shadow(0 7px 9px #d88a9b40);
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose)}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600}
+h1{font-size:clamp(48px,10vw,90px);line-height:.95;margin:23px 0 18px}
+h1 em{font-weight:400;color:var(--rose)}
+h2{font-size:clamp(34px,6vw,53px);margin:8px 0 12px}
+h3{font-size:26px;margin:0 0 8px}
+p{line-height:1.8}
+.hero p{max-width:540px}
+.cherry{font-size:53px;display:block;margin:12px;animation:sway 3s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+.center{text-align:center}
+.small{font-size:13px;opacity:.8}
+.panel{
+  background:#fffdf9d9;border:1px solid #ead4d7;
+  border-radius:25px;padding:clamp(18px,4vw,34px);
+  box-shadow:0 12px 35px #82505b0d
 }
-.btn {
-  display: inline-block;
-  border: 0;
-  border-radius: 40px;
-  padding: 14px 23px;
-  margin: 14px 5px 0;
-  cursor: pointer;
-  background: var(--dark);
-  color: white;
-  font-size: 12px;
-  transition: transform .25s, box-shadow .25s;
+.story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:25px 0}
+.story-card{background:#fff6f4;border:1px solid #efd9dd;border-radius:22px;padding:23px}
+.story-card .emoji{font-size:32px}
+.section-head{text-align:center;margin:28px 0}
+.section-head p{max-width:580px;margin:10px auto}
+.searchbar{
+  display:flex;gap:9px;max-width:670px;margin:20px auto;flex-wrap:wrap
 }
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px #75425225;
+input{
+  min-width:0;flex:1;padding:14px 17px;border-radius:15px;
+  border:1px solid #e6cbd1;background:#fffdfb;color:var(--dark)
 }
-.btn.alt {
-  color: var(--dark);
-  background: white;
-  border: 1px solid #eed1da;
+.filterrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:15px 0 24px}
+.filterrow button{border:1px solid #e6cbd1;background:#fffaf8;padding:9px 14px;border-radius:99px;color:var(--dark)}
+.filterrow button.selected{background:var(--dark);color:white}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+.stat{background:#fff;border:1px solid #eed9dd;border-radius:15px;padding:11px 17px;font-size:13px}
+.stat strong{color:var(--rose);font-size:18px;margin-right:4px}
+.catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:14px}
+.idol{
+  border:1px solid #ead5da;border-radius:22px;padding:18px;
+  background:#fffdfb;display:flex;flex-direction:column;gap:10px;
+  transition:.2s;min-width:0
 }
-.float {
-  position: absolute;
-  opacity: .65;
-  pointer-events: none;
-  animation: bob 4s ease-in-out infinite;
+.idol:hover{transform:translateY(-3px);box-shadow:0 10px 24px #ad6c7b12}
+.avatar{
+  width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
+  font-family:'Cormorant Garamond',serif;font-size:27px;
+  background:linear-gradient(145deg,#f8dce5,#fff0dc);border:1px solid #e9cbd2
 }
-.f1 { top: 15%; left: 8%; font-size: 28px; }
-.f2 { top: 26%; right: 9%; font-size: 23px; animation-delay: -2s; }
-.f3 { bottom: 13%; left: 13%; font-size: 21px; animation-delay: -1s; }
-.f4 { bottom: 18%; right: 12%; font-size: 28px; animation-delay: -3s; }
-section { padding: 76px 7%; }
-.section-head { text-align: center; margin: 0 auto 32px; }
-.kicker {
-  color: #c16b83;
-  letter-spacing: 3px;
-  font-size: 10px;
-  text-transform: uppercase;
-  font-weight: 700;
+.idol .name{font-weight:700;overflow-wrap:anywhere}
+.group{font-size:12px;color:#8c6672}
+.status{font-size:12px;display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.status.busy .dot{background:#c16b7a}
+.idol .btn{margin-top:auto;width:100%}
+.idol .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-card{max-width:600px;margin:24px auto}
+.field{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.field label{font-weight:700;font-size:13px}
+.field input{width:100%;flex:auto}
+.notice{padding:13px 16px;border-radius:14px;background:#fff1f4;font-size:13px;line-height:1.7}
+.message{margin-top:15px;padding:13px;border-radius:13px;display:none;overflow-wrap:anywhere}
+.message.show{display:block}
+.message.error{background:#ffebeb;color:#8b3030}
+.message.success{background:#eaf5eb;color:#285d38}
+.reservations{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.reservation{background:#fff;border:1px solid #ead5da;border-radius:16px;padding:17px}
+.reservation strong{display:block;margin-bottom:5px}
+.empty{grid-column:1/-1;text-align:center;padding:30px;background:#fff;border-radius:20px}
+footer{position:relative;z-index:1;text-align:center;padding:28px 12px;border-top:1px solid #ead5da;font-size:12px;color:#866775}
+footer span{color:var(--rose)}
+#loading{padding:40px;text-align:center}
+@media(max-width:600px){
+ header{align-items:flex-start;flex-direction:column}
+ .nav{justify-content:flex-start}
+ .nav button{padding:8px 12px;font-size:12px}
+ .hero{min-height:65vh}
+ .catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .idol{padding:13px;border-radius:17px}
+ .idol .btn{padding:10px 8px;font-size:12px}
+ .avatar{width:52px;height:52px}
 }
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(29px, 6vw, 43px);
-  font-weight: 500;
-  margin: 12px 0;
-}
-.section-head p {
-  max-width: 460px;
-  margin: auto;
-  font-size: 13px;
-  line-height: 1.8;
-}
-.about {
-  background: white;
-  text-align: center;
-}
-.note {
-  max-width: 650px;
-  margin: auto;
-  padding: 32px 25px;
-  border: 1px solid #f1d8df;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #fff8fa, #fffdf8);
-  box-shadow: 0 10px 35px #b87a8510;
-}
-.note .symbol { font-size: 30px; }
-.note p {
-  font-size: 14px;
-  line-height: 2;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
-  max-width: 900px;
-  margin: auto;
-}
-.tile {
-  padding: 24px 15px;
-  border-radius: 20px;
-  text-align: center;
-  border: 1px solid #f3dce2;
-  background: white;
-  transition: transform .25s;
-}
-.tile:hover { transform: translateY(-5px) rotate(-1deg); }
-.tile .emoji { font-size: 34px; }
-.tile h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 19px;
-  margin: 12px 0 8px;
-}
-.tile p {
-  font-size: 12px;
-  line-height: 1.8;
-  margin: 0;
-}
-.world { background: var(--light); }
-.world .tile { background: #fffaf9; }
-.join { text-align: center; background: white; }
-.join-card {
-  max-width: 650px;
-  margin: auto;
-  padding: 40px 20px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #fff0f4, #f3edff, #fff7e8);
-}
-.join-card p {
-  font-size: 13px;
-  line-height: 1.9;
-}
-footer {
-  padding: 28px 15px;
-  text-align: center;
-  background: #fff4f3;
-  font-size: 11px;
-  line-height: 2;
-}
-footer span { color: #c16b83; }
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.spark {
-  position: fixed;
-  z-index: 30;
-  pointer-events: none;
-  animation: sparkle 900ms ease-out forwards;
-}
-@keyframes bob {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-10px) rotate(4deg); }
-}
-@keyframes sparkle {
-  from { opacity: 1; transform: translateY(0) scale(1); }
-  to { opacity: 0; transform: translateY(-45px) scale(.3) rotate(35deg); }
-}
-@media (max-width: 600px) {
-  nav { padding: 13px 5%; }
-  .logo { font-size: 16px; }
-  .navlinks { gap: 10px; font-size: 10px; }
-  .hero { min-height: 82vh; }
-  section { padding: 60px 6%; }
-  .grid { grid-template-columns: 1fr; gap: 12px; }
-  .tile { padding: 22px; }
-  .f1 { left: 5%; }
-  .f2 { right: 5%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-  }
-}
+@media(max-width:360px){.catalog{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-<nav>
-  <a class="logo" href="#inicio">Maison Cerise ♡</a>
-  <div class="navlinks">
-    <a href="#nosotras">Nosotras</a>
-    <a href="#mundo">Nuestro mundo</a>
-    <a href="#unete">Únete</a>
-  </div>
-</nav>
-
-<header class="hero" id="inicio">
-  <span class="float f1">୨୧</span>
-  <span class="float f2">✧</span>
-  <span class="float f3">♡</span>
-  <span class="float f4">୨ৎ</span>
-
-  <div class="eyebrow">un pequeño lugar para soñar</div>
-  <div class="cherry">🍒</div>
-  <h1>Bienvenue à<br><em>Maison Cerise</em></h1>
-  <p>
-    Un universo de dulzura, amistad y pequeñas locuras.
-    Aquí cada persona tiene su propia magia y un lugar al que pertenecer.
-  </p>
-  <div>
-    <a class="btn" href="#nosotras">Descubre nuestro mundo ♡</a>
-    <a class="btn alt" href="#unete">Conócenos ✧</a>
-  </div>
-  <p style="font-size:11px;letter-spacing:2px">♡ fait avec amour ♡</p>
+<div id="sparkles" aria-hidden="true"></div>
+<header>
+  <div class="logo">Maison <span>Cerise</span> ♡</div>
+  <nav class="nav" aria-label="Navegación principal">
+    <button onclick="showScreen('home')">Inicio</button>
+    <button onclick="showScreen('story')">El cuento</button>
+    <button onclick="showScreen('catalog')">Catálogo</button>
+    <button onclick="showScreen('reservations')">Roles ocupados</button>
+  </nav>
 </header>
 
-<section class="about" id="nosotras">
-  <div class="section-head reveal">
-    <div class="kicker">un peu de nous</div>
-    <h2>¿Qué es Maison Cerise?</h2>
-    <p>Más que un team, una pequeña historia que escribimos juntas.</p>
-  </div>
-  <div class="note reveal">
-    <div class="symbol">🎀</div>
-    <p>
-      Somos una comunidad de rol que celebra la creatividad,
-      la amistad y la personalidad de cada integrante.
-      Nos gusta crear recuerdos, compartir ideas y hacer de
-      cada día una nueva aventura.
-    </p>
-    <p><em>Un lugar dulce, libre y lleno de posibilidades.</em></p>
-    <div>୨୧ ♡ ୨୧</div>
+<main>
+<section id="home" class="screen active">
+  <div class="hero">
+    <div class="eyebrow">Un pequeño universo de K-pop</div>
+    <span class="cherry">🍒</span>
+    <h1>Maison <em>Cerise</em></h1>
+    <p>Entre la magia, los lazos y los sueños, cada estrella encuentra su lugar. Bienvenida a nuestra pequeña casa de cerezas.</p>
+    <button class="btn primary" onclick="showScreen('story')">Abrir el cuento ✧</button>
+    <p class="small">Una historia hecha de música, amistad y muchas cerecitas ♡</p>
   </div>
 </section>
 
-<section id="mundo" class="world">
-  <div class="section-head reveal">
-    <div class="kicker">les petits détails</div>
-    <h2>Nuestro pequeño mundo</h2>
-    <p>Cada rincón tiene su encanto. ¿Cuál será tu favorito?</p>
+<section id="story" class="screen">
+  <div class="section-head">
+    <div class="eyebrow">Capítulo I</div>
+    <h2>Había una vez…</h2>
+    <p>Un rincón donde cada persona podía encontrar el personaje que quería representar y escribir su propia historia.</p>
   </div>
+  <div class="story-grid">
+    <article class="story-card"><div class="emoji">🎀</div><h3>Encuentra tu estrella</h3><p>Explora los idols de distintos grupos y busca el personaje que más te guste.</p></article>
+    <article class="story-card"><div class="emoji">🍓</div><h3>Elige tu lugar</h3><p>Consulta la disponibilidad antes de solicitar una reserva.</p></article>
+    <article class="story-card"><div class="emoji">💌</div><h3>Escribe tu nombre</h3><p>Reserva el rol con tu usuario para que las demás personas sepan que ya está ocupado.</p></article>
+  </div>
+  <div class="center"><button class="btn" onclick="showScreen('home')">Volver</button> <button class="btn primary" onclick="showScreen('catalog')">Explorar los idols ♡</button></div>
+</section>
 
-  <div class="grid">
-    <article class="tile reveal">
-      <div class="emoji">🧸</div>
-      <h3>Nuestra familia</h3>
-      <p>Personas diferentes, una comunidad y muchos recuerdos por crear.</p>
-    </article>
-    <article class="tile reveal">
-      <div class="emoji">🪄</div>
-      <h3>Nuestra magia</h3>
-      <p>Creatividad, personajes, historias y momentos inolvidables.</p>
-    </article>
-    <article class="tile reveal">
-      <div class="emoji">🍰</div>
-      <h3>Nuestro rincón</h3>
-      <p>Un espacio para compartir, divertirnos y expresarnos con libertad.</p>
-    </article>
+<section id="catalog" class="screen">
+  <div class="section-head">
+    <div class="eyebrow">El gran salón</div>
+    <h2>Catálogo de idols</h2>
+    <p>Busca por nombre artístico o grupo. Cada reserva se comparte con quienes visiten esta página.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong id="totalCount">—</strong> roles</div>
+    <div class="stat"><strong id="freeCount">—</strong> disponibles</div>
+    <div class="stat"><strong id="busyCount">—</strong> ocupados</div>
+  </div>
+  <div class="searchbar">
+    <input id="searchInput" type="search" placeholder="Buscar idol o grupo…" aria-label="Buscar idol o grupo">
+    <button class="btn" onclick="renderCatalog()">Buscar</button>
+  </div>
+  <div class="filterrow">
+    <button class="selected" data-filter="all" onclick="setFilter('all',this)">Todos</button>
+    <button data-filter="free" onclick="setFilter('free',this)">Disponibles</button>
+    <button data-filter="busy" onclick="setFilter('busy',this)">Ocupados</button>
+  </div>
+  <div id="catalogMessage" class="notice" role="status">Conectando con el reino de las cerezas…</div>
+  <div id="catalogList" class="catalog" style="margin-top:18px"></div>
+  <div class="center" style="margin-top:24px"><button class="btn" onclick="showScreen('reservations')">Ver roles ocupados ♡</button></div>
+</section>
+
+<section id="reserve" class="screen">
+  <div class="section-head">
+    <div class="eyebrow">Capítulo II</div>
+    <h2>Reserva tu estrella</h2>
+    <p>Un pequeño paso para elegir tu lugar en Maison Cerise.</p>
+  </div>
+  <div class="panel form-card">
+    <div class="notice">♡ Las reservas son compartidas. Comprueba que el idol esté disponible antes de confirmar. Tu usuario aparecerá junto al rol reservado.</div>
+    <form id="reserveForm">
+      <div class="field">
+        <label for="roleName">Idol que deseas reservar</label>
+        <input id="roleName" required maxlength="160" placeholder="Ej. Jennie — BLACKPINK">
+      </div>
+      <div class="field">
+        <label for="userName">Tu usuario del team</label>
+        <input id="userName" required minlength="2" maxlength="60" autocomplete="nickname" placeholder="Escribe tu usuario">
+      </div>
+      <button id="reserveButton" class="btn primary" type="submit" style="width:100%">Confirmar mi reserva ♡</button>
+      <div id="reserveMessage" class="message" role="status" aria-live="polite"></div>
+    </form>
+    <p class="small">Al reservar, otras personas podrán ver el nombre del rol y el usuario que lo ocupa.</p>
+    <div class="center"><button class="btn" onclick="showScreen('catalog')">Volver al catálogo</button></div>
   </div>
 </section>
 
-<section id="unete" class="join">
-  <div class="join-card reveal">
-    <div style="font-size:40px">💌</div>
-    <div class="kicker">une petite invitation</div>
-    <h2>¿Quieres formar parte?</h2>
-    <p>
-      Toda historia bonita comienza con un pequeño paso.
-      Ven a conocer Maison Cerise y descubre si este es tu lugar.
-    </p>
-
-    <!-- CAMBIA EL ENLACE DE ABAJO POR EL DE TU GRUPO -->
-    <a class="btn" href="https://chat.whatsapp.com/" target="_blank" rel="noopener noreferrer">
-      Entrar a nuestro universo ♡
-    </a>
-    <p style="font-size:11px">Esperamos conocerte pronto. 🍒</p>
+<section id="reservations" class="screen">
+  <div class="section-head">
+    <div class="eyebrow">El libro de la casa</div>
+    <h2>Roles ocupados</h2>
+    <p>Estas son las reservas que aparecen en la base de datos compartida.</p>
+  </div>
+  <div class="searchbar">
+    <input id="reservationSearch" type="search" placeholder="Buscar un rol o usuario…" aria-label="Buscar en roles ocupados">
+    <button class="btn" onclick="renderReservations()">Buscar</button>
+  </div>
+  <div id="reservationList" class="reservations"></div>
+  <div class="center" style="margin-top:24px">
+    <button class="btn" onclick="loadRoles()">Actualizar lista ↻</button>
+    <button class="btn primary" onclick="showScreen('catalog')">Volver al catálogo</button>
   </div>
 </section>
+</main>
 
-<footer>
-  <div style="font-family:'Playfair Display',serif;font-size:20px">
-    Maison Cerise ♡
-  </div>
-  Un pequeño universo creado con cariño.
-  <br>
-  <span>fait avec amour, toujours ୨୧</span>
-  <br>© <span id="year"></span> Maison Cerise
-</footer>
+<footer>Hecho con cariño, cerecitas y un poquito de magia <span>♡ 🍒</span><br>Maison Cerise</footer>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+/* Configuración del proyecto Maison Cerise */
+const SUPABASE_URL = 'https://mvlgelukuxurbtmxaswa.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_LAheuaIbHM1v3caeP9OHXQ_7vHXUbDR';
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+let roles = [];
+let activeFilter = 'all';
+let loading = false;
+
+const $ = id => document.getElementById(id);
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  $(id).classList.add('active');
+  if (id === 'catalog') renderCatalog();
+  if (id === 'reservations') renderReservations();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function setFilter(filter,button) {
+  activeFilter = filter;
+  document.querySelectorAll('.filterrow button').forEach(b=>b.classList.remove('selected'));
+  button.classList.add('selected');
+  renderCatalog();
+}
+
+function splitRole(name) {
+  const parts = name.split(' — ');
+  return {idol:parts[0], group:parts.slice(1).join(' — ') || 'K-pop'};
+}
+
+function updateStats() {
+  $('totalCount').textContent = roles.length;
+  $('freeCount').textContent = roles.filter(r=>!r.reserved_by).length;
+  $('busyCount').textContent = roles.filter(r=>r.reserved_by).length;
+}
+
+function setCatalogMessage(text,error=false) {
+  const el = $('catalogMessage');
+  el.textContent = text;
+  el.style.background = error ? '#ffebeb' : '#fff1f4';
+}
+
+async function api(path,options={}) {
+  const response = await fetch(SUPABASE_URL + '/rest/v1/' + path,{
+    ...options,
+    headers:{
+      'apikey':SUPABASE_KEY,
+      'Content-Type':'application/json',
+      ...(options.headers||{})
     }
   });
-}, { threshold: 0.12 });
+  const body = await response.text();
+  let data = null;
+  try { data = body ? JSON.parse(body) : null; } catch {}
+  if (!response.ok) {
+    const message = data?.message || data?.details || body || 'No se pudo completar la solicitud.';
+    throw new Error(message);
+  }
+  return data;
+}
 
-document.querySelectorAll('.reveal').forEach((item) => {
-  observer.observe(item);
+async function loadRoles() {
+  if (loading) return;
+  loading = true;
+  setCatalogMessage('Cargando los roles de Maison Cerise…');
+  try {
+    const data = await api('team_roles?select=id,role_name,reserved_by,reserved_at&order=role_name.asc');
+    roles = Array.isArray(data) ? data : [];
+    updateStats();
+    if (roles.length === 0) {
+      setCatalogMessage('La tabla está vacía. Comprueba que los idols se hayan insertado en public.team_roles.');
+    } else {
+      setCatalogMessage('♡ Catálogo actualizado. Los cambios se guardan en la base de datos compartida.');
+    }
+    renderCatalog();
+    renderReservations();
+  } catch (err) {
+    setCatalogMessage('No pudimos cargar el catálogo: ' + err.message + ' Comprueba los permisos de lectura de Supabase.',true);
+    $('catalogList').innerHTML = '<div class="empty">No se pudo conectar con la base de datos.<br>Revisa la configuración de Supabase.</div>';
+  } finally {
+    loading = false;
+  }
+}
+
+function renderCatalog() {
+  const list = $('catalogList');
+  const query = ($('searchInput').value || '').trim().toLowerCase();
+  const filtered = roles.filter(r => {
+    const match = r.role_name.toLowerCase().includes(query) ||
+      (r.reserved_by || '').toLowerCase().includes(query);
+    const status = !r.reserved_by ? 'free' : 'busy';
+    return match && (activeFilter === 'all' || activeFilter === status);
+  });
+  list.innerHTML = '';
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">No encontramos roles con esa búsqueda. ♡</div>';
+    return;
+  }
+  const frag = document.createDocumentFragment();
+  filtered.forEach(r => {
+    const parts = splitRole(r.role_name);
+    const busy = !!r.reserved_by;
+    const card = document.createElement('article');
+    card.className = 'idol';
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar';
+    avatar.textContent = parts.idol.slice(0,2).toUpperCase();
+    const name = document.createElement('div');
+    name.className = 'name';
+    name.textContent = parts.idol;
+    const group = document.createElement('div');
+    group.className = 'group';
+    group.textContent = parts.group;
+    const status = document.createElement('div');
+    status.className = 'status' + (busy?' busy':'');
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    const statusText = document.createElement('span');
+    statusText.textContent = busy ? 'Reservado por ' + r.reserved_by : 'Disponible';
+    status.append(dot,statusText);
+    const button = document.createElement('button');
+    button.className = 'btn' + (busy?'':' primary');
+    button.textContent = busy ? 'Rol ocupado' : 'Reservar ♡';
+    button.disabled = busy;
+    button.addEventListener('click',()=>{
+      $('roleName').value = r.role_name;
+      $('reserveMessage').className = 'message';
+      $('reserveMessage').textContent = '';
+      showScreen('reserve');
+    });
+    card.append(avatar,name,group,status,button);
+    frag.append(card);
+  });
+  list.append(frag);
+}
+
+function renderReservations() {
+  const list = $('reservationList');
+  if (!list) return;
+  const query = ($('reservationSearch').value || '').trim().toLowerCase();
+  const filtered = roles.filter(r => r.reserved_by &&
+    (r.role_name.toLowerCase().includes(query) || r.reserved_by.toLowerCase().includes(query)));
+  list.innerHTML = '';
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">Todavía no hay reservas que coincidan con tu búsqueda. 🍒</div>';
+    return;
+  }
+  const frag = document.createDocumentFragment();
+  filtered.forEach(r=>{
+    const card = document.createElement('article');
+    card.className = 'reservation';
+    const name = document.createElement('strong');
+    name.textContent = '🍒 ' + r.role_name;
+    const user = document.createElement('span');
+    user.textContent = 'Reservado por: ' + r.reserved_by;
+    card.append(name,user);
+    frag.append(card);
+  });
+  list.append(frag);
+}
+
+function showReserveMessage(text,type) {
+  const el = $('reserveMessage');
+  el.textContent = text;
+  el.className = 'message show ' + type;
+}
+
+$('searchInput').addEventListener('input',renderCatalog);
+$('reservationSearch').addEventListener('input',renderReservations);
+
+$('reserveForm').addEventListener('submit',async event=>{
+  event.preventDefault();
+  const role = $('roleName').value.trim();
+  const user = $('userName').value.trim();
+  const button = $('reserveButton');
+  if (user.length < 2) {
+    showReserveMessage('Escribe un usuario de al menos 2 caracteres.','error');
+    return;
+  }
+  const selected = roles.find(r=>r.role_name.toLowerCase()===role.toLowerCase());
+  if (!selected) {
+    showReserveMessage('No encontramos ese rol. Elige uno del catálogo.','error');
+    return;
+  }
+  if (selected.reserved_by) {
+    showReserveMessage('Este rol ya está reservado. Elige otro idol.','error');
+    return;
+  }
+  button.disabled = true;
+  button.textContent = 'Guardando reserva…';
+  try {
+    await api('rpc/reserve_team_role',{
+      method:'POST',
+      body:JSON.stringify({p_role_name:role,p_reserved_by:user})
+    });
+    showReserveMessage('¡Reserva realizada! Tu rol ya aparece como ocupado. ♡','success');
+    await loadRoles();
+    setTimeout(()=>showScreen('reservations'),900);
+  } catch (err) {
+    showReserveMessage('No se pudo reservar: ' + err.message + ' Puede que otra persona lo haya reservado primero. Actualiza el catálogo e inténtalo de nuevo.','error');
+    await loadRoles();
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Confirmar mi reserva ♡';
+  }
 });
 
-document.addEventListener('click', (event) => {
-  const sparkle = document.createElement('span');
-  sparkle.className = 'spark';
-  sparkle.textContent = ['✧', '♡', '୨୧', '✨'][Math.floor(Math.random() * 4)];
-  sparkle.style.left = event.clientX + 'px';
-  sparkle.style.top = event.clientY + 'px';
-  sparkle.style.color = '#c16b83';
-  sparkle.style.fontSize = '20px';
-  document.body.appendChild(sparkle);
-  setTimeout(() => sparkle.remove(), 950);
-});
+/* Pequeños destellos decorativos */
+const sparkleBox = $('sparkles');
+for(let i=0;i<20;i++){
+  const s=document.createElement('span');
+  s.className='sparkle';
+  s.textContent=['✧','♡','·','✦'][i%4];
+  s.style.left=(Math.random()*100)+'%';
+  s.style.top=(Math.random()*100)+'%';
+  s.style.fontSize=(12+Math.random()*16)+'px';
+  s.style.animationDelay=(-Math.random()*8)+'s';
+  sparkleBox.append(s);
+}
+
+loadRoles();
 </script>
 </body>
 </html>
